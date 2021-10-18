@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data:cached
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+
+  backend:
+    build:
+      context: .
+    command: bash -c "./entrypoint.sh && uvicorn main:app --reload --host 0.0.0.0"
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    env_file:
+      - .env
