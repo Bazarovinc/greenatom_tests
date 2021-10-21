@@ -13,7 +13,8 @@ services:
   backend:
     build:
       context: .
-    command: bash -c "alembic upgrade head && uvicorn main:app --reload --host 0.0.0.0"
+    command: uvicorn main:app --reload --host 0.0.0.0
+    entrypoint: wait-for db:5432 -- ./entrypoint.sh
     restart: unless-stopped
     ports:
       - 8000:8000
