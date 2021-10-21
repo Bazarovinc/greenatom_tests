@@ -6,7 +6,7 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data:cached
     ports:
-      - 15432:5432
+      - 5432:5432
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
 
