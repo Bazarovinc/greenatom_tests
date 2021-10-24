@@ -1,7 +1,7 @@
 import sqlalchemy.orm
+from sqlalchemy.ext.declarative import declarative_base
 
 from src.core import config
-from sqlalchemy.ext.declarative import declarative_base
 
 DSN = f"postgresql://{config.POSTGRES_USER}:{config.POSTGRES_PASSWORD}@{config.POSTGRES_HOST}:" \
       f"{config.POSTGRES_PORT}"

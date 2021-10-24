@@ -1,6 +1,8 @@
-from src.core.database import Base
-from sqlalchemy import VARCHAR, Column, Integer, BigInteger, Sequence, DateTime
 from datetime import datetime
+
+from sqlalchemy import VARCHAR, Column, DateTime, Integer
+
+from src.core.database import Base
 
 
 class Inbox(Base):

@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:12-alpine
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data:cached
+      - ./postgres:/var/lib/postgresql/data:cached
     ports:
       - 5432:5432
     environment:
@@ -22,3 +22,6 @@ services:
       - db
     env_file:
       - .env
+  test:
+    build: .
+    command: pytest tests/test_api.py

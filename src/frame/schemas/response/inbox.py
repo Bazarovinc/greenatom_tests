@@ -1,6 +1,6 @@
-from pydantic import BaseModel
 from datetime import datetime
-from fastapi.responses import FileResponse
+
+from pydantic import BaseModel
 
 
 class InboxResponseSchema(BaseModel):

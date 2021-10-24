@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from src.frame.api import frame
 
 router = APIRouter()

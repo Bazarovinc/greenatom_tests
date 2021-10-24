@@ -1,9 +1,9 @@
-from src.core.database import Base, get_db
 from fastapi import Depends
-from src.frame.models import Inbox
 from sqlalchemy.orm import Session
+
+from src.core.database import Base, get_db
+from src.frame.models import Inbox
 from src.frame.schemas.base.inbox import InboxSchema
-from typing import List
 
 
 class InboxService:
