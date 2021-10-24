@@ -26,12 +26,18 @@ def save_images_and_record_into_db(
     check_or_create_directory()
     response = []
     for image in images:
-        filename = str(uuid.uuid4()) + '.jpeg'
-        check_or_create_directory(name=now, path='data/')
-        save_image('data/' + now + '/' + filename, image)
-        response.append(
-            InboxResponseSchema.from_orm(service.create(InboxSchema(filename=filename, code=code)))
-        )
+        if 'image' in image.content_type:
+            filename = str(uuid.uuid4()) + '.jpeg'
+            check_or_create_directory(name=now, path='data/')
+            save_image('data/' + now + '/' + filename, image)
+            response.append(
+                InboxResponseSchema.from_orm(service.create(InboxSchema(filename=filename, code=code)))
+            )
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail='Files must bu only images'
+            )
     return response
 
 
