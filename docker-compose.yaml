@@ -23,5 +23,10 @@ services:
     env_file:
       - .env
   test:
-    build: .
+    build:
+      context: .
     command: pytest tests/test_api.py
+    depends_on:
+      - db
+    env_file:
+      - .env
