@@ -1,17 +1,22 @@
 # How to start the application
-* Build the project in docker
+* Run `start.sh` script
 ```
-docker-compose build
+./start.sh
 ```
-* Up database
+# Docs
+You can see all allowed api-methods and mannualy test them on ```http://0.0.0.0:8000/docs```
+# Stop application
 ```
-docker-compose up -d db
+docker-compose stop
 ```
-* Upgrade alembic head
+# Run tests
+* First of all, please, stop running the application by the last command and than run ```test.sh``` script
 ```
-docker-compose run backend alembic upgrade head
+./test.sh
 ```
-* Up the application
+You will see the result of the tests on your screen
+# Finish
+When you finish checking the app and tests run the command (it will stop running all processes in docker container and delete the container):
 ```
-docker-compose up
+docker-compose down
 ```
