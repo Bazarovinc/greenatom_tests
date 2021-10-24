@@ -16,7 +16,7 @@ def test_put_images_view():
     # Case #1: image saved, 201
     response = client.put(
         'api/frame',
-        files={'images': ('filename', open('../files/180px-Python-logo.jpg', 'rb'), 'image/jpg')}
+        files={'images': ('filename', open('files/180px-Python-logo.jpg', 'rb'), 'image/jpg')}
     )
     assert response.status_code == 201
     response_data = response.json()[0]
